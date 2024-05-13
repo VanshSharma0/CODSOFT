@@ -40,7 +40,7 @@ public class Quiz {
         System.out.print("Enter your answer (A-D): ");
         String answer = scanner.nextLine().toUpperCase();
     
-        answerThread.interrupt(); // Stop the timer thread
+        answerThread.interrupt();
     
         if (answer.equals(question.getCorrectAnswer())) {
             System.out.println("Correct!");
@@ -101,10 +101,8 @@ class AnswerThread extends Thread {
         try {
             TimeUnit.SECONDS.sleep(Quiz.TIME_PER_QUESTION);
             System.out.println("Time's Up!");
-            // Move to the next question without waiting for input
             return;
         } catch (InterruptedException e) {
-            // Timer interrupted by user input
         }
     }
 }
